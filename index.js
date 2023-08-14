@@ -1,5 +1,8 @@
 // Завдання 1: Дано масив, використовуючи цикл "for in" виведіть на консоль всі індекси цього масиву
 function printIndexes(array) {
+  for (const index in array) {
+    console.log(index);
+  }
   // Проходимося по всіх індексах масиву
   // Виводимо кожен індекс на консоль
 }
@@ -15,6 +18,11 @@ printIndexes([1, 2, 3, 4, 5]);
 
 // Завдання 2: Дано масив, використовуючи цикл "for in" знайдіть суму всіх елементів масиву
 function sumArray(array) {
+  let sum = 0;
+  for (let index in array) {
+    sum += array[index];
+  }
+  return sum;
   // Ініціалізуємо змінну для зберігання суми
   // Проходимося по всіх індексах масиву
   // Додаємо кожен елемент до загальної суми
@@ -30,6 +38,11 @@ function multiplyArray(array) {
   // Проходимося по всіх значеннях масиву
   // Множимо кожен елемент на загальний добуток
   // Повертаємо добуток
+  let result = 1;
+  for (let value of array) {
+    result *= value;
+  }
+  return result;
 }
 
 console.log("Завдання 3 ====================================");
@@ -39,6 +52,8 @@ console.log("multiplyArray([1, 2, 3, 4, 5])", multiplyArray([1, 2, 3, 4, 5])); /
 function modifyArray(array) {
   // Видаляємо третій елемент масиву
   // Виводимо масив перетворений в рядок
+  delete [2];
+  console.log(array.toString());
 }
 
 console.log("Завдання 4 ====================================");
@@ -48,6 +63,9 @@ modifyArray([1, "two", 3, "four", 5]); // Виведе 1,two,,four,5
 function printUppercase(array) {
   // Проходимося по всіх елементах масиву
   // Перетворюємо кожен елемент в верхній регістр та виводимо на консоль
+  for (let index of array) {
+    console.log(index.toUpperCase());
+  }
 }
 
 console.log("Завдання 5 ====================================");
@@ -63,6 +81,18 @@ function findMinMax([firstElement, ...restElements]) {
   // Перевіряємо, чи поточний елемент більший за максимальне значення
   // Якщо так, оновлюємо максимальне значення
   // Виводимо мінімальне та максимальне значення
+  let minValue = firstElement;
+  let maxValue = firstElement;
+
+  for (let element of restElements) {
+    if (restElements[element] < minValue) {
+      minValue = restElements[element];
+    }
+    if (restElements[element] > maxValue) {
+      maxValue = restElements[element];
+    }
+  }
+  console.log("min:", minValue, "max:", maxValue);
 }
 
 console.log("Завдання 6 ====================================");
@@ -72,6 +102,7 @@ findMinMax([5, 2, 8, 1, 9, 3]); // Виведе Min: 1 Max: 9
 // Перетворіть масив в рядок за допомогою методу toString() та повторіть його 2 рази. Результат виведіть на консоль.
 function printStrings(array) {
   // Перетворюємо масив в рядок і видаляемо пробіли та виводимо його на консоль
+  console.log(array.toString().repeat(2));
 }
 
 console.log("Завдання 7 ====================================");
@@ -84,6 +115,9 @@ function concatenateStrings(array, subString) {
   // Використовуємо метод toString() для перетворення масиву в рядок
   //Перевіряємо чи містить рядок підрядок
   // Виводимо результат
+  const string = array.toString();
+  const hasSubString = string.includes(subString);
+  console.log(hasSubString);
 }
 
 console.log("Завдання 8 ====================================");
@@ -97,6 +131,12 @@ function addTenToEach(array) {
   // Перебираємо масив за допомогою циклу for-in
   // Додаємо до поточного елемента 10 та додаємо результат в новий масив
   // Виводимо результат
+  let mas = Array(array.lenght);
+
+  for (let element in array) {
+    mas[element] = array[element] + 10;
+  }
+  console.log(mas);
 }
 
 console.log("Завдання 9 ====================================");
